@@ -31,6 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === "GET") {
     res.status(200).json({
       status: "ok",
+      version: "1.0.1",
       message: `${getCompanyName()} Bot webhook is ready`,
       configured: !!process.env.BOT_TOKEN,
       botMode: getBotMode(),

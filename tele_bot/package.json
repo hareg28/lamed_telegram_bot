@@ -1,0 +1,44 @@
+{
+  "name": "lamed-pr-bot",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "postinstall": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio",
+    "bot:set-webhook": "tsx scripts/set-webhook.ts",
+    "bot:webhook-info": "tsx scripts/webhook-info.ts",
+    "bot:delete-webhook": "tsx scripts/delete-webhook.ts",
+    "bot:polling": "tsx scripts/bot-polling.ts",
+    "db:reset-requests": "tsx scripts/reset-requests.ts",
+    "db:sync-sheets": "tsx scripts/sync-sheets.ts",
+    "db:clear-all": "tsx scripts/clear-all-data.ts"
+  },
+  "dependencies": {
+    "@grammyjs/conversations": "^2.0.3",
+    "@neondatabase/serverless": "^1.1.0",
+    "@prisma/client": "^6.9.0",
+    "exceljs": "^4.4.0",
+    "googleapis": "^173.0.0",
+    "grammy": "^1.44.0",
+    "next": "^15.3.3",
+    "pdfkit": "^0.17.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.29",
+    "@types/pdfkit": "^0.13.9",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "dotenv": "^16.5.0",
+    "prisma": "^6.19.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}

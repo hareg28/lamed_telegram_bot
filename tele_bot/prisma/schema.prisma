@@ -1,0 +1,305 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ============================================================
+// USER
+// ============================================================
+
+model User {
+  id               String   @id @default(cuid())
+  telegramId       BigInt   @unique
+  telegramUsername String?
+  fullName         String
+  role             UserRole @default(REQUESTER)
+  email            String?
+  phone            String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  materialRequests MaterialRequest[]  @relation("Requester")
+  purchaseRequests PurchaseRequest[]  @relation("Purchaser")
+  approvedPrs      PurchaseRequest[]  @relation("ApprovedBy")
+  approvalHistory  ApprovalHistory[]  @relation("PerformedBy")
+  notifications    Notification[]
+  formDrafts       FormDraft[]
+}
+
+// ============================================================
+// PROJECT
+// ============================================================
+
+model Project {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  projectType String?
+  description String?
+  isActive    Boolean  @default(true)
+  // Keep boqList for backward compatibility
+  boqList     String[] @default([])
+  createdAt   DateTime @default(now())
+
+  materialRequests MaterialRequest[]
+}
+
+// ============================================================
+// GLOBAL BOQ REGISTER
+// ============================================================
+
+model Boq {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ============================================================
+// MATERIAL REQUEST
+// ============================================================
+
+model MaterialRequest {
+  id           String        @id @default(cuid())
+  mrNumber     String        @unique
+  projectId    String
+  project      Project       @relation(fields: [projectId], references: [id])
+  projectName  String
+  projectType  String?
+  boq          String?
+  prNumber     String?
+  requestedById String
+  requestedBy  User          @relation("Requester", fields: [requestedById], references: [id])
+  requesterName String?
+  requestDate  DateTime      @default(now())
+  status       RequestStatus @default(PENDING_APPROVAL)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  items            MaterialRequestItem[]
+  purchaseRequests PurchaseRequest[]
+  approvalHistory  ApprovalHistory[]
+}
+
+model MaterialRequestItem {
+  id        String          @id @default(cuid())
+  requestId String
+  request   MaterialRequest @relation(fields: [requestId], references: [id])
+  lineId    String?
+  boqSection String?
+  itemName  String
+  quantity  Decimal
+  unit      String
+  sortOrder Int             @default(0)
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+
+  purchaseItems PurchaseRequestItem[]
+}
+
+// ============================================================
+// SUPPLIER
+// ============================================================
+
+model Supplier {
+  id               String   @id @default(cuid())
+  supplierId       String   @unique @default(cuid())
+  name             String
+  companyName      String?
+  contactPerson    String?
+  phone            String?
+  email            String?
+  address          String?
+  vatReceiptNumber String?
+  bankName         String?
+  accountName      String?
+  accountNumber    String?
+  isActive         Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  purchaseRequests PurchaseRequest[]
+}
+
+// ============================================================
+// PURCHASE REQUEST
+// ============================================================
+
+model PurchaseRequest {
+  id                String        @id @default(cuid())
+  prNumber          String        @unique
+  materialRequestId String
+  materialRequest   MaterialRequest @relation(fields: [materialRequestId], references: [id])
+  purchaserId       String
+  purchaser         User          @relation("Purchaser", fields: [purchaserId], references: [id])
+
+  // Supplier (optional FK — supplier may be ad-hoc or from master)
+  supplierId        String?
+  supplier          Supplier?     @relation(fields: [supplierId], references: [id])
+  supplierName      String
+  supplierCompanyName String?
+  supplierPhone     String?
+  supplierBankName  String?
+  vatReceiptNumber  String?
+  accountNumber     String?
+
+  // Cost
+  subtotal          Decimal
+  vatAmount         Decimal
+  grandTotal        Decimal
+  vatStatus         String        @default("VAT 15%")
+
+  // Delivery
+  expectedDeliveryDate DateTime?
+  actualDeliveryDate   DateTime?
+  deliveryRemarks      String?
+  deliveryStatus       DeliveryStatus @default(PENDING_DELIVERY)
+
+  // Status & approval
+  status            PurchaseStatus @default(PENDING_APPROVAL)
+  approvedById      String?
+  approvedBy        User?          @relation("ApprovedBy", fields: [approvedById], references: [id])
+  approvalDate      DateTime?
+  rejectionReason   String?
+  purchasedDate     DateTime?
+
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  items           PurchaseRequestItem[]
+  approvalHistory ApprovalHistory[]
+}
+
+model PurchaseRequestItem {
+  id                    String              @id @default(cuid())
+  purchaseId            String
+  purchase              PurchaseRequest     @relation(fields: [purchaseId], references: [id])
+  materialRequestItemId String?
+  materialRequestItem   MaterialRequestItem? @relation(fields: [materialRequestItemId], references: [id])
+  lineId                String?
+  itemName              String
+  quantity              Decimal
+  unit                  String
+  unitPrice             Decimal
+  priceType             String              @default("Excluding VAT")
+  discountPct           Decimal             @default(0)
+  discountAmount        Decimal             @default(0)
+  vatPct                Decimal             @default(15)
+  vatAmount             Decimal             @default(0)
+  amount                Decimal
+  sortOrder             Int                 @default(0)
+  createdAt             DateTime            @default(now())
+}
+
+// ============================================================
+// APPROVAL HISTORY
+// ============================================================
+
+model ApprovalHistory {
+  id                String           @id @default(cuid())
+  materialRequestId String?
+  materialRequest   MaterialRequest? @relation(fields: [materialRequestId], references: [id])
+  purchaseRequestId String?
+  purchaseRequest   PurchaseRequest? @relation(fields: [purchaseRequestId], references: [id])
+  action            ApprovalAction
+  performedById     String
+  performedBy       User             @relation("PerformedBy", fields: [performedById], references: [id])
+  createdAt         DateTime         @default(now())
+}
+
+// ============================================================
+// FORM DRAFT (conversation state)
+// ============================================================
+
+model FormDraft {
+  id         String   @id @default(cuid())
+  telegramId BigInt   @unique
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id])
+  step       String   @default("idle")
+  flowType   String   @default("mr")
+  data       Json     @default("{}")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+// ============================================================
+// NOTIFICATION
+// ============================================================
+
+model Notification {
+  id                String   @id @default(cuid())
+  userId            String
+  user              User     @relation(fields: [userId], references: [id])
+  message           String
+  materialRequestId String?
+  isRead            Boolean  @default(false)
+  createdAt         DateTime @default(now())
+}
+
+// ============================================================
+// ACTIVITY LOG
+// ============================================================
+
+model ActivityLog {
+  id         String   @id @default(cuid())
+  action     String
+  entityType String
+  entityId   String
+  userId     String?
+  details    Json?
+  createdAt  DateTime @default(now())
+}
+
+// ============================================================
+// ENUMS
+// ============================================================
+
+enum UserRole {
+  REQUESTER
+  PROJECT_MANAGER
+  PURCHASER
+  ADMINISTRATOR
+  VIEWER
+}
+
+enum RequestStatus {
+  PENDING_APPROVAL
+  APPROVED_FOR_PURCHASING
+  WAITING_FINAL_APPROVAL
+  COMPLETED
+  REJECTED
+}
+
+enum PurchaseStatus {
+  DRAFT
+  PENDING_APPROVAL
+  APPROVED
+  REJECTED
+  ORDERED
+  DELIVERED
+  COMPLETED
+  CLOSED
+  CANCELLED
+}
+
+enum DeliveryStatus {
+  PENDING_DELIVERY
+  PARTIALLY_DELIVERED
+  DELIVERED
+  DELAYED
+}
+
+enum ApprovalAction {
+  MR_SUBMITTED
+  MR_APPROVED
+  MR_REJECTED
+  PURCHASE_SUBMITTED
+  PURCHASE_APPROVED
+  PURCHASE_REJECTED
+}

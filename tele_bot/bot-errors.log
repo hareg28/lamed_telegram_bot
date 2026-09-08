@@ -1,0 +1,3228 @@
+[2026-07-15T12:39:24.902Z] [bot.catch] GrammyError in middleware: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 61)
+GrammyError: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 61)
+    at toGrammyError (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\error.js:47:12)
+    at ApiClient.callApi (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handleAdminManageUsername (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:803:3)
+    at async handleAdminDraftMessage (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:869:7)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:268:28)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-15T13:09:25.577Z] [handleAdminMrApproveByNumber] 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:274:33
+
+  271   searchNumber = `MR-${numPart.padStart(6, "0")}`;
+  272 }
+  273 
+→ 274 return prisma.materialRequest.findUnique({
+        where: {
+          mrNumber: "MR-000005"
+        },
+        include: {
+          requestedBy: true,
+          items: {
+            orderBy: {
+              sortOrder: "asc"
+            },
+            include: {
+              purchaseItems: {
+                include: {
+                  purchaseRequest: true,
+                  ~~~~~~~~~~~~~~~
+      ?           purchase?: true,
+      ?           materialRequestItem?: true
+                }
+              }
+            }
+          },
+          purchaseRequests: {
+            include: {
+              items: {
+                orderBy: {
+                  sortOrder: "asc"
+                }
+              },
+              purchaser: true,
+              approvedBy: true
+            },
+            orderBy: {
+              createdAt: "desc"
+            }
+          },
+          approvalHistory: {
+            include: {
+              performedBy: true
+            },
+            orderBy: {
+              createdAt: "desc"
+            }
+          }
+        }
+      })
+
+Unknown field `purchaseRequest` for include statement on model `PurchaseRequestItem`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:274:33
+
+  271   searchNumber = `MR-${numPart.padStart(6, "0")}`;
+  272 }
+  273 
+→ 274 return prisma.materialRequest.findUnique({
+        where: {
+          mrNumber: "MR-000005"
+        },
+        include: {
+          requestedBy: true,
+          items: {
+            orderBy: {
+              sortOrder: "asc"
+            },
+            include: {
+              purchaseItems: {
+                include: {
+                  purchaseRequest: true,
+                  ~~~~~~~~~~~~~~~
+      ?           purchase?: true,
+      ?           materialRequestItem?: true
+                }
+              }
+            }
+          },
+          purchaseRequests: {
+            include: {
+              items: {
+                orderBy: {
+                  sortOrder: "asc"
+                }
+              },
+              purchaser: true,
+              approvedBy: true
+            },
+            orderBy: {
+              createdAt: "desc"
+            }
+          },
+          approvalHistory: {
+            include: {
+              performedBy: true
+            },
+            orderBy: {
+              createdAt: "desc"
+            }
+          }
+        }
+      })
+
+Unknown field `purchaseRequest` for include statement on model `PurchaseRequestItem`. Available options are marked with ?.
+    at throwValidationException (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:45:9)
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleAdminMrApproveByNumber (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:130:16)
+    at async handleAdminDraftMessage (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:961:7)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:273:28)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-15T13:32:35.994Z] [handleAdminAssignUser] GrammyError: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 21)
+    at toGrammyError (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\error.js:47:12)
+    at ApiClient.callApi (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handleAdminAssignUser (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:864:3)
+    at async handleAdminDraftMessage (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:922:9)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:273:28)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-15T13:45:18.767Z] [bot.catch] Error in middleware: FORBIDDEN
+Error: FORBIDDEN
+    at requireRole (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:62:11)
+    at async startPurchaseFromMr (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\purchase-form.ts:79:16)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:171:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-15T13:45:36.087Z] [bot.catch] Error in middleware: FORBIDDEN
+Error: FORBIDDEN
+    at requireRole (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:62:11)
+    at async startPurchaseFromMr (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\purchase-form.ts:79:16)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:171:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-15T14:26:10.616Z] [handlePrApproveConfirm] 
+Invalid `tx.purchaseRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:194:37
+
+  191   },
+  192 });
+  193 
+→ 194 return await tx.purchaseRequest.findUnique(
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5248 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+PrismaClientKnownRequestError: 
+Invalid `tx.purchaseRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:194:37
+
+  191   },
+  192 });
+  193 
+→ 194 return await tx.purchaseRequest.findUnique(
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5248 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:194:12)
+    at async Proxy._transactionWithCallback (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:722:18)
+    at async approvePurchaseRequest (C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:150:21)
+    at async handlePrApproveConfirm (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:497:5)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:159:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-15T14:27:44.512Z] [handlePrApproveConfirm] 
+Invalid `tx.purchaseRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:194:37
+
+  191   },
+  192 });
+  193 
+→ 194 return await tx.purchaseRequest.findUnique(
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5251 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+PrismaClientKnownRequestError: 
+Invalid `tx.purchaseRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:194:37
+
+  191   },
+  192 });
+  193 
+→ 194 return await tx.purchaseRequest.findUnique(
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5251 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:194:12)
+    at async Proxy._transactionWithCallback (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:722:18)
+    at async approvePurchaseRequest (C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:150:21)
+    at async handlePrApproveConfirm (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:497:5)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:159:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-15T14:29:47.515Z] [handlePrApproveConfirm] 
+Invalid `tx.purchaseRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:194:37
+
+  191   },
+  192 });
+  193 
+→ 194 return await tx.purchaseRequest.findUnique(
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5250 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+PrismaClientKnownRequestError: 
+Invalid `tx.purchaseRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:194:37
+
+  191   },
+  192 });
+  193 
+→ 194 return await tx.purchaseRequest.findUnique(
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5250 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:194:12)
+    at async Proxy._transactionWithCallback (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:722:18)
+    at async approvePurchaseRequest (C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:150:21)
+    at async handlePrApproveConfirm (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:497:5)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:159:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-15T14:39:06.351Z] [handlePrApproveConfirm] 
+Invalid `tx.purchaseRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:194:37
+
+  191   },
+  192 });
+  193 
+→ 194 return await tx.purchaseRequest.findUnique(
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5468 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+PrismaClientKnownRequestError: 
+Invalid `tx.purchaseRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:194:37
+
+  191   },
+  192 });
+  193 
+→ 194 return await tx.purchaseRequest.findUnique(
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5468 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:194:12)
+    at async Proxy._transactionWithCallback (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:722:18)
+    at async approvePurchaseRequest (C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:150:21)
+    at async handlePrApproveConfirm (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:497:5)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:159:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-15T14:42:33.810Z] [handlePrApproveConfirm] 
+Invalid `tx.purchaseRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:194:37
+
+  191   },
+  192 });
+  193 
+→ 194 return await tx.purchaseRequest.findUnique(
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5251 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+PrismaClientKnownRequestError: 
+Invalid `tx.purchaseRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:194:37
+
+  191   },
+  192 });
+  193 
+→ 194 return await tx.purchaseRequest.findUnique(
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5251 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:194:12)
+    at async Proxy._transactionWithCallback (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:722:18)
+    at async approvePurchaseRequest (C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:150:21)
+    at async handlePrApproveConfirm (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:497:5)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:159:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-15T14:42:54.539Z] [handlePrApproveConfirm] Transaction API error: Transaction not found. Transaction ID is invalid, refers to an old closed transaction Prisma doesn't have information about anymore, or was obtained before disconnecting.
+PrismaClientKnownRequestError: Transaction API error: Transaction not found. Transaction ID is invalid, refers to an old closed transaction Prisma doesn't have information about anymore, or was obtained before disconnecting.
+    at Qr.transaction (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\core\engines\library\LibraryEngine.ts:217:13)
+    at async Proxy._transactionWithCallback (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:725:9)
+    at async approvePurchaseRequest (C:\Users\HP\Desktop\tele_bot\src\lib\purchase-request.ts:150:21)
+    at async handlePrApproveConfirm (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:497:5)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:159:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-15T15:12:10.412Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `aws-1-eu-central-1.pooler.supabase.com:6543`
+
+Please make sure your database server is running at `aws-1-eu-central-1.pooler.supabase.com:6543`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `aws-1-eu-central-1.pooler.supabase.com:6543`
+
+Please make sure your database server is running at `aws-1-eu-central-1.pooler.supabase.com:6543`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:80:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-15T17:16:43.342Z] [bot.catch] GrammyError in middleware: Call to 'answerCallbackQuery' failed! (400: Bad Request: query is too old and response timeout expired or query ID is invalid)
+GrammyError: Call to 'answerCallbackQuery' failed! (400: Bad Request: query is too old and response timeout expired or query ID is invalid)
+    at toGrammyError (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\error.js:47:12)
+    at ApiClient.callApi (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handleSetPriceCallback (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\purchase-form.ts:575:3)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:216:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-15T17:53:08.308Z] [bot.catch] GrammyError in middleware: Call to 'answerCallbackQuery' failed! (400: Bad Request: query is too old and response timeout expired or query ID is invalid)
+GrammyError: Call to 'answerCallbackQuery' failed! (400: Bad Request: query is too old and response timeout expired or query ID is invalid)
+    at toGrammyError (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\error.js:47:12)
+    at ApiClient.callApi (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handleEditQtyCallback (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\purchase-form.ts:551:3)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:207:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-15T18:36:07.326Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `aws-1-eu-central-1.pooler.supabase.com:6543`
+
+Please make sure your database server is running at `aws-1-eu-central-1.pooler.supabase.com:6543`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `aws-1-eu-central-1.pooler.supabase.com:6543`
+
+Please make sure your database server is running at `aws-1-eu-central-1.pooler.supabase.com:6543`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:80:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-15T21:27:10.221Z] [bot.catch] PrismaClientValidationError in middleware: 
+Invalid `prisma.supplier.findMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:468:41
+
+  465 export async function searchSuppliersForPurchase(
+  466   query: string
+  467 ): Promise<Array<{ id: string; name: string; companyName?: string; phone?: string }>> {
+→ 468   const results = await prisma.supplier.findMany({
+          where: {
+            isActive: true,
+            OR: [
+              {
+                name: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                companyName: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              }
+            ]
+          },
+          take: 8,
+          select: {
+            id: true,
+            name: true,
+            companyName: true,
+            phone: true
+          }
+        })
+
+Unknown argument `companyName`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.supplier.findMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:468:41
+
+  465 export async function searchSuppliersForPurchase(
+  466   query: string
+  467 ): Promise<Array<{ id: string; name: string; companyName?: string; phone?: string }>> {
+→ 468   const results = await prisma.supplier.findMany({
+          where: {
+            isActive: true,
+            OR: [
+              {
+                name: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                companyName: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              }
+            ]
+          },
+          take: 8,
+          select: {
+            id: true,
+            name: true,
+            companyName: true,
+            phone: true
+          }
+        })
+
+Unknown argument `companyName`. Available options are marked with ?.
+    at throwValidationException (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:45:9)
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async searchSuppliersForPurchase (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:468:19)
+    at async handleSupplierSearch (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\purchase-form.ts:417:19)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:259:25)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-16T12:40:48.327Z] [bot.catch] PrismaClientValidationError in middleware: 
+Invalid `prisma.supplier.findMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:474:41
+
+  471 export async function searchSuppliersForPurchase(
+  472   query: string
+  473 ): Promise<Array<{ id: string; name: string; companyName?: string; phone?: string }>> {
+→ 474   const results = await prisma.supplier.findMany({
+          where: {
+            isActive: true,
+            OR: [
+              {
+                name: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                companyName: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              }
+            ]
+          },
+          take: 8,
+          select: {
+            id: true,
+            name: true,
+            companyName: true,
+            phone: true
+          }
+        })
+
+Unknown argument `companyName`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.supplier.findMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:474:41
+
+  471 export async function searchSuppliersForPurchase(
+  472   query: string
+  473 ): Promise<Array<{ id: string; name: string; companyName?: string; phone?: string }>> {
+→ 474   const results = await prisma.supplier.findMany({
+          where: {
+            isActive: true,
+            OR: [
+              {
+                name: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                companyName: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              }
+            ]
+          },
+          take: 8,
+          select: {
+            id: true,
+            name: true,
+            companyName: true,
+            phone: true
+          }
+        })
+
+Unknown argument `companyName`. Available options are marked with ?.
+    at throwValidationException (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:45:9)
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async searchSuppliersForPurchase (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:474:19)
+    at async handleSupplierSearch (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\purchase-form.ts:433:19)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:274:25)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-16T12:40:58.237Z] [bot.catch] PrismaClientValidationError in middleware: 
+Invalid `prisma.supplier.findMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:474:41
+
+  471 export async function searchSuppliersForPurchase(
+  472   query: string
+  473 ): Promise<Array<{ id: string; name: string; companyName?: string; phone?: string }>> {
+→ 474   const results = await prisma.supplier.findMany({
+          where: {
+            isActive: true,
+            OR: [
+              {
+                name: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                companyName: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              }
+            ]
+          },
+          take: 8,
+          select: {
+            id: true,
+            name: true,
+            companyName: true,
+            phone: true
+          }
+        })
+
+Unknown argument `companyName`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.supplier.findMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:474:41
+
+  471 export async function searchSuppliersForPurchase(
+  472   query: string
+  473 ): Promise<Array<{ id: string; name: string; companyName?: string; phone?: string }>> {
+→ 474   const results = await prisma.supplier.findMany({
+          where: {
+            isActive: true,
+            OR: [
+              {
+                name: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                companyName: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              }
+            ]
+          },
+          take: 8,
+          select: {
+            id: true,
+            name: true,
+            companyName: true,
+            phone: true
+          }
+        })
+
+Unknown argument `companyName`. Available options are marked with ?.
+    at throwValidationException (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:45:9)
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async searchSuppliersForPurchase (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:474:19)
+    at async handleSupplierSearch (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\purchase-form.ts:433:19)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:274:25)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-16T13:14:03.117Z] [bot.catch] PrismaClientValidationError in middleware: 
+Invalid `prisma.supplier.findMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:271:43
+
+  268 async function handleSearch(ctx: Context, text: string): Promise<boolean> {
+  269   const from = ctx.from!;
+  270   const query = text.trim();
+→ 271   const suppliers = await prisma.supplier.findMany({
+          where: {
+            OR: [
+              {
+                name: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                companyName: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                phone: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                tinNumber: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              }
+            ]
+          },
+          take: 10
+        })
+
+Unknown argument `companyName`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.supplier.findMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:271:43
+
+  268 async function handleSearch(ctx: Context, text: string): Promise<boolean> {
+  269   const from = ctx.from!;
+  270   const query = text.trim();
+→ 271   const suppliers = await prisma.supplier.findMany({
+          where: {
+            OR: [
+              {
+                name: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                companyName: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                phone: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                tinNumber: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              }
+            ]
+          },
+          take: 10
+        })
+
+Unknown argument `companyName`. Available options are marked with ?.
+    at throwValidationException (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:45:9)
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleSearch (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:271:21)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:279:25)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-16T13:14:17.317Z] [bot.catch] PrismaClientValidationError in middleware: 
+Invalid `prisma.supplier.findMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:271:43
+
+  268 async function handleSearch(ctx: Context, text: string): Promise<boolean> {
+  269   const from = ctx.from!;
+  270   const query = text.trim();
+→ 271   const suppliers = await prisma.supplier.findMany({
+          where: {
+            OR: [
+              {
+                name: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                companyName: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                phone: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                tinNumber: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              }
+            ]
+          },
+          take: 10
+        })
+
+Unknown argument `companyName`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.supplier.findMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:271:43
+
+  268 async function handleSearch(ctx: Context, text: string): Promise<boolean> {
+  269   const from = ctx.from!;
+  270   const query = text.trim();
+→ 271   const suppliers = await prisma.supplier.findMany({
+          where: {
+            OR: [
+              {
+                name: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                companyName: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                phone: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              },
+              {
+                tinNumber: {
+                  contains: "Hareg",
+                  mode: "insensitive"
+                }
+              }
+            ]
+          },
+          take: 10
+        })
+
+Unknown argument `companyName`. Available options are marked with ?.
+    at throwValidationException (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:45:9)
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleSearch (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:271:21)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:279:25)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-16T13:18:19.397Z] [bot.catch] PrismaClientValidationError in middleware: 
+Invalid `prisma.supplier.create()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:230:42
+
+  227 const from = ctx.from!;
+  228 const remarks = text === "⏭ Skip" ? undefined : text.trim() || undefined;
+  229 
+→ 230 const supplier = await prisma.supplier.create({
+        data: {
+          name: "Mm",
+          companyName: undefined,
+          contactPerson: undefined,
+          phone: "0987654321",
+          altPhone: undefined,
+          tinNumber: undefined,
+          vatRegistered: true,
+          ~~~~~~~~~~~~~
+          bankName: "Cbe",
+          accountNumber: "10000098654",
+          remarks: undefined,
+      ?   id?: String,
+      ?   supplierId?: String,
+      ?   email?: String | Null,
+      ?   address?: String | Null,
+      ?   vatReceiptNumber?: String | Null,
+      ?   isActive?: Boolean,
+      ?   createdAt?: DateTime,
+      ?   updatedAt?: DateTime,
+      ?   purchaseRequests?: PurchaseRequestCreateNestedManyWithoutSupplierInput
+        }
+      })
+
+Unknown argument `vatRegistered`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.supplier.create()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:230:42
+
+  227 const from = ctx.from!;
+  228 const remarks = text === "⏭ Skip" ? undefined : text.trim() || undefined;
+  229 
+→ 230 const supplier = await prisma.supplier.create({
+        data: {
+          name: "Mm",
+          companyName: undefined,
+          contactPerson: undefined,
+          phone: "0987654321",
+          altPhone: undefined,
+          tinNumber: undefined,
+          vatRegistered: true,
+          ~~~~~~~~~~~~~
+          bankName: "Cbe",
+          accountNumber: "10000098654",
+          remarks: undefined,
+      ?   id?: String,
+      ?   supplierId?: String,
+      ?   email?: String | Null,
+      ?   address?: String | Null,
+      ?   vatReceiptNumber?: String | Null,
+      ?   isActive?: Boolean,
+      ?   createdAt?: DateTime,
+      ?   updatedAt?: DateTime,
+      ?   purchaseRequests?: PurchaseRequestCreateNestedManyWithoutSupplierInput
+        }
+      })
+
+Unknown argument `vatRegistered`. Available options are marked with ?.
+    at throwValidationException (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:45:9)
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleRegFinish (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:230:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:279:25)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-16T13:18:39.112Z] [bot.catch] PrismaClientValidationError in middleware: 
+Invalid `prisma.supplier.create()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:230:42
+
+  227 const from = ctx.from!;
+  228 const remarks = text === "⏭ Skip" ? undefined : text.trim() || undefined;
+  229 
+→ 230 const supplier = await prisma.supplier.create({
+        data: {
+          name: "Mm",
+          companyName: undefined,
+          contactPerson: undefined,
+          phone: "0987654321",
+          altPhone: undefined,
+          tinNumber: undefined,
+          vatRegistered: true,
+          ~~~~~~~~~~~~~
+          bankName: "Cbe",
+          accountNumber: "10000098654",
+          remarks: undefined,
+      ?   id?: String,
+      ?   supplierId?: String,
+      ?   email?: String | Null,
+      ?   address?: String | Null,
+      ?   vatReceiptNumber?: String | Null,
+      ?   isActive?: Boolean,
+      ?   createdAt?: DateTime,
+      ?   updatedAt?: DateTime,
+      ?   purchaseRequests?: PurchaseRequestCreateNestedManyWithoutSupplierInput
+        }
+      })
+
+Unknown argument `vatRegistered`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.supplier.create()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:230:42
+
+  227 const from = ctx.from!;
+  228 const remarks = text === "⏭ Skip" ? undefined : text.trim() || undefined;
+  229 
+→ 230 const supplier = await prisma.supplier.create({
+        data: {
+          name: "Mm",
+          companyName: undefined,
+          contactPerson: undefined,
+          phone: "0987654321",
+          altPhone: undefined,
+          tinNumber: undefined,
+          vatRegistered: true,
+          ~~~~~~~~~~~~~
+          bankName: "Cbe",
+          accountNumber: "10000098654",
+          remarks: undefined,
+      ?   id?: String,
+      ?   supplierId?: String,
+      ?   email?: String | Null,
+      ?   address?: String | Null,
+      ?   vatReceiptNumber?: String | Null,
+      ?   isActive?: Boolean,
+      ?   createdAt?: DateTime,
+      ?   updatedAt?: DateTime,
+      ?   purchaseRequests?: PurchaseRequestCreateNestedManyWithoutSupplierInput
+        }
+      })
+
+Unknown argument `vatRegistered`. Available options are marked with ?.
+    at throwValidationException (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:45:9)
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleRegFinish (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:230:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:279:25)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-16T13:18:49.859Z] [bot.catch] PrismaClientValidationError in middleware: 
+Invalid `prisma.supplier.create()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:230:42
+
+  227 const from = ctx.from!;
+  228 const remarks = text === "⏭ Skip" ? undefined : text.trim() || undefined;
+  229 
+→ 230 const supplier = await prisma.supplier.create({
+        data: {
+          name: "Mm",
+          companyName: undefined,
+          contactPerson: undefined,
+          phone: "0987654321",
+          altPhone: undefined,
+          tinNumber: undefined,
+          vatRegistered: true,
+          ~~~~~~~~~~~~~
+          bankName: "Cbe",
+          accountNumber: "10000098654",
+          remarks: undefined,
+      ?   id?: String,
+      ?   supplierId?: String,
+      ?   email?: String | Null,
+      ?   address?: String | Null,
+      ?   vatReceiptNumber?: String | Null,
+      ?   isActive?: Boolean,
+      ?   createdAt?: DateTime,
+      ?   updatedAt?: DateTime,
+      ?   purchaseRequests?: PurchaseRequestCreateNestedManyWithoutSupplierInput
+        }
+      })
+
+Unknown argument `vatRegistered`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.supplier.create()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:230:42
+
+  227 const from = ctx.from!;
+  228 const remarks = text === "⏭ Skip" ? undefined : text.trim() || undefined;
+  229 
+→ 230 const supplier = await prisma.supplier.create({
+        data: {
+          name: "Mm",
+          companyName: undefined,
+          contactPerson: undefined,
+          phone: "0987654321",
+          altPhone: undefined,
+          tinNumber: undefined,
+          vatRegistered: true,
+          ~~~~~~~~~~~~~
+          bankName: "Cbe",
+          accountNumber: "10000098654",
+          remarks: undefined,
+      ?   id?: String,
+      ?   supplierId?: String,
+      ?   email?: String | Null,
+      ?   address?: String | Null,
+      ?   vatReceiptNumber?: String | Null,
+      ?   isActive?: Boolean,
+      ?   createdAt?: DateTime,
+      ?   updatedAt?: DateTime,
+      ?   purchaseRequests?: PurchaseRequestCreateNestedManyWithoutSupplierInput
+        }
+      })
+
+Unknown argument `vatRegistered`. Available options are marked with ?.
+    at throwValidationException (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:45:9)
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleRegFinish (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:230:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:279:25)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-16T13:19:54.341Z] [bot.catch] PrismaClientValidationError in middleware: 
+Invalid `prisma.supplier.create()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:230:42
+
+  227 const from = ctx.from!;
+  228 const remarks = text === "⏭ Skip" ? undefined : text.trim() || undefined;
+  229 
+→ 230 const supplier = await prisma.supplier.create({
+        data: {
+          name: "Mm",
+          companyName: undefined,
+          contactPerson: undefined,
+          phone: "0987654321",
+          altPhone: undefined,
+          tinNumber: undefined,
+          vatRegistered: true,
+          ~~~~~~~~~~~~~
+          bankName: "Cbe",
+          accountNumber: "10000098654",
+          remarks: undefined,
+      ?   id?: String,
+      ?   supplierId?: String,
+      ?   email?: String | Null,
+      ?   address?: String | Null,
+      ?   vatReceiptNumber?: String | Null,
+      ?   isActive?: Boolean,
+      ?   createdAt?: DateTime,
+      ?   updatedAt?: DateTime,
+      ?   purchaseRequests?: PurchaseRequestCreateNestedManyWithoutSupplierInput
+        }
+      })
+
+Unknown argument `vatRegistered`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.supplier.create()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:230:42
+
+  227 const from = ctx.from!;
+  228 const remarks = text === "⏭ Skip" ? undefined : text.trim() || undefined;
+  229 
+→ 230 const supplier = await prisma.supplier.create({
+        data: {
+          name: "Mm",
+          companyName: undefined,
+          contactPerson: undefined,
+          phone: "0987654321",
+          altPhone: undefined,
+          tinNumber: undefined,
+          vatRegistered: true,
+          ~~~~~~~~~~~~~
+          bankName: "Cbe",
+          accountNumber: "10000098654",
+          remarks: undefined,
+      ?   id?: String,
+      ?   supplierId?: String,
+      ?   email?: String | Null,
+      ?   address?: String | Null,
+      ?   vatReceiptNumber?: String | Null,
+      ?   isActive?: Boolean,
+      ?   createdAt?: DateTime,
+      ?   updatedAt?: DateTime,
+      ?   purchaseRequests?: PurchaseRequestCreateNestedManyWithoutSupplierInput
+        }
+      })
+
+Unknown argument `vatRegistered`. Available options are marked with ?.
+    at throwValidationException (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:45:9)
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleRegFinish (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:230:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:279:25)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-16T13:22:59.236Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.supplier.create()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:230:42
+
+  227 const from = ctx.from!;
+  228 const remarks = text === "⏭ Skip" ? undefined : text.trim() || undefined;
+  229 
+→ 230 const supplier = await prisma.supplier.create(
+The column `vatRegistered` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.supplier.create()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:230:42
+
+  227 const from = ctx.from!;
+  228 const remarks = text === "⏭ Skip" ? undefined : text.trim() || undefined;
+  229 
+→ 230 const supplier = await prisma.supplier.create(
+The column `vatRegistered` does not exist in the current database.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleRegFinish (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\supplier-master.ts:230:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:279:25)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-16T14:42:12.589Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.formDraft.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\drafts.ts:10:27
+
+   7 }
+   8 
+   9 export async function getDraft(telegramId: bigint) {
+→ 10   return prisma.formDraft.findUnique(
+Server has closed the connection.
+PrismaClientKnownRequestError: 
+Invalid `prisma.formDraft.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\drafts.ts:10:27
+
+   7 }
+   8 
+   9 export async function getDraft(telegramId: bigint) {
+→ 10   return prisma.formDraft.findUnique(
+Server has closed the connection.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleMrDraftMessage (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\mr-form.ts:53:17)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:269:25)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-19T18:15:40.844Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:22:01.199Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:27:31.399Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:34:18.813Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:34:44.481Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:37:54.294Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:38:20.593Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:38:48.797Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:39:09.721Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:39:35.244Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:40:07.425Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:40:24.194Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:40:44.710Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:41:29.946Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:42:14.845Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:46:05.310Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:46:26.680Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:53:15.066Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:58:44.270Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:58:54.812Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T18:59:14.055Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T19:00:02.959Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T19:00:45.480Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T19:02:05.289Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T19:02:20.636Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T19:04:01.385Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:38
+
+   7   username?: string,
+   8   fullName?: string
+   9 ) {
+→ 10   const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async findOrCreateUser (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:10:20)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T19:20:01.241Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:60:40
+
+  57   fullName?: string
+  58 ) {
+  59   return withRetry(async () => {
+→ 60     const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:60:40
+
+  57   fullName?: string
+  58 ) {
+  59   return withRetry(async () => {
+→ 60     const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:60:22)
+    at async withRetry (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:18:14)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T19:34:52.293Z] [bot.catch] PrismaClientInitializationError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:61:40
+
+  58   fullName?: string
+  59 ) {
+  60   return withRetry(async () => {
+→ 61     const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l-pooler.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l-pooler.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:61:40
+
+  58   fullName?: string
+  59 ) {
+  60   return withRetry(async () => {
+→ 61     const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l-pooler.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l-pooler.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:242:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:61:22)
+    at async withRetry (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:19:14)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:98:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T20:05:17.823Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:61:40
+
+  58   fullName?: string
+  59 ) {
+  60   return withRetry(async () => {
+→ 61     const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l-pooler.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l-pooler.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:61:40
+
+  58   fullName?: string
+  59 ) {
+  60   return withRetry(async () => {
+→ 61     const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l-pooler.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l-pooler.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:61:22)
+    at async withRetry (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:19:14)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:104:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T20:16:42.332Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:61:40
+
+  58   fullName?: string
+  59 ) {
+  60   return withRetry(async () => {
+→ 61     const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l-pooler.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l-pooler.c-12.us-east-1.aws.neon.tech:5432`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:61:40
+
+  58   fullName?: string
+  59 ) {
+  60   return withRetry(async () => {
+→ 61     const existing = await prisma.user.findUnique(
+Can't reach database server at `ep-empty-lab-aweatq9l-pooler.c-12.us-east-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-empty-lab-aweatq9l-pooler.c-12.us-east-1.aws.neon.tech:5432`.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:61:22)
+    at async withRetry (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:19:14)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:104:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-19T21:26:01.466Z] [handleAdminMrApproveByNumber] 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:277:33
+
+  274   searchNumber = `MR-${numPart.padStart(6, "0")}`;
+  275 }
+  276 
+→ 277 return prisma.materialRequest.findUnique(
+Server has closed the connection.
+PrismaClientKnownRequestError: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:277:33
+
+  274   searchNumber = `MR-${numPart.padStart(6, "0")}`;
+  275 }
+  276 
+→ 277 return prisma.materialRequest.findUnique(
+Server has closed the connection.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleAdminMrApproveByNumber (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:132:16)
+    at async handleAdminDraftMessage (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:1159:7)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:401:28)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-19T21:26:01.536Z] [bot.catch] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.formDraft.deleteMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\drafts.ts:59:26
+
+  56 }
+  57 
+  58 export async function clearDraft(telegramId: bigint) {
+→ 59   await prisma.formDraft.deleteMany(
+Server has closed the connection.
+PrismaClientKnownRequestError: 
+Invalid `prisma.formDraft.deleteMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\drafts.ts:59:26
+
+  56 }
+  57 
+  58 export async function clearDraft(telegramId: bigint) {
+→ 59   await prisma.formDraft.deleteMany(
+Server has closed the connection.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async clearDraft (C:\Users\HP\Desktop\tele_bot\src\bot\drafts.ts:59:3)
+    at async handleAdminMrApproveByNumber (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:170:5)
+    at async handleAdminDraftMessage (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:1159:7)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:401:28)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-19T21:27:39.191Z] [bot.catch] GrammyError in middleware: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 24)
+GrammyError: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 24)
+    at toGrammyError (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\error.js:47:12)
+    at ApiClient.callApi (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handleAdminFilter (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:67:3)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:144:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-19T21:27:49.481Z] [bot.catch] GrammyError in middleware: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 24)
+GrammyError: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 24)
+    at toGrammyError (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\error.js:47:12)
+    at ApiClient.callApi (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handleAdminFilter (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:67:3)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:144:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-20T18:55:50.177Z] [handleAdminFinalApproveByNumber] 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:281:33
+
+  278   searchNumber = `MR-${numPart.padStart(6, "0")}`;
+  279 }
+  280 
+→ 281 return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:281:33
+
+  278   searchNumber = `MR-${numPart.padStart(6, "0")}`;
+  279 }
+  280 
+→ 281 return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleAdminFinalApproveByNumber (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:238:16)
+    at async handleAdminDraftMessage (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:1185:7)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:437:28)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-20T18:56:21.502Z] [handleAdminFinalApproveByNumber] 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:281:33
+
+  278   searchNumber = `MR-${numPart.padStart(6, "0")}`;
+  279 }
+  280 
+→ 281 return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:281:33
+
+  278   searchNumber = `MR-${numPart.padStart(6, "0")}`;
+  279 }
+  280 
+→ 281 return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleAdminFinalApproveByNumber (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:238:16)
+    at async handleAdminDraftMessage (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:1185:7)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:437:28)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-20T19:28:15.546Z] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:241:33
+
+  238 }
+  239 
+  240 export async function getMaterialRequestById(id: string) {
+→ 241   return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:241:33
+
+  238 }
+  239 
+  240 export async function getMaterialRequestById(id: string) {
+→ 241   return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleMrApproveCallback (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:370:14)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:253:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-20T19:43:58.924Z] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:241:33
+
+  238 }
+  239 
+  240 export async function getMaterialRequestById(id: string) {
+→ 241   return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:241:33
+
+  238 }
+  239 
+  240 export async function getMaterialRequestById(id: string) {
+→ 241   return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleMrApproveCallback (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:370:14)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:253:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-20T19:53:15.314Z] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:241:33
+
+  238 }
+  239 
+  240 export async function getMaterialRequestById(id: string) {
+→ 241   return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:241:33
+
+  238 }
+  239 
+  240 export async function getMaterialRequestById(id: string) {
+→ 241   return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleMrApproveCallback (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:370:14)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:253:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-20T20:11:41.436Z] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:241:33
+
+  238 }
+  239 
+  240 export async function getMaterialRequestById(id: string) {
+→ 241   return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:241:33
+
+  238 }
+  239 
+  240 export async function getMaterialRequestById(id: string) {
+→ 241   return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleMrApproveCallback (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:370:14)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:255:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-20T20:12:19.012Z] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:241:33
+
+  238 }
+  239 
+  240 export async function getMaterialRequestById(id: string) {
+→ 241   return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:241:33
+
+  238 }
+  239 
+  240 export async function getMaterialRequestById(id: string) {
+→ 241   return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleMrApproveCallback (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:370:14)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:255:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-20T20:23:41.673Z] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:241:33
+
+  238 }
+  239 
+  240 export async function getMaterialRequestById(id: string) {
+→ 241   return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:241:33
+
+  238 }
+  239 
+  240 export async function getMaterialRequestById(id: string) {
+→ 241   return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleMrApproveCallback (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:370:14)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:255:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-20T20:46:36.174Z] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:241:33
+
+  238 }
+  239 
+  240 export async function getMaterialRequestById(id: string) {
+→ 241   return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.materialRequest.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:241:33
+
+  238 }
+  239 
+  240 export async function getMaterialRequestById(id: string) {
+→ 241   return prisma.materialRequest.findUnique(
+The column `PurchaseRequest.supplierCompanyName` does not exist in the current database.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleMrApproveCallback (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:370:14)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:255:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-20T21:22:55.562Z] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:61:40
+
+  58   fullName?: string
+  59 ) {
+  60   return withRetry(async () => {
+→ 61     const existing = await prisma.user.findUnique(
+The table `public.User` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:61:40
+
+  58   fullName?: string
+  59 ) {
+  60   return withRetry(async () => {
+→ 61     const existing = await prisma.user.findUnique(
+The table `public.User` does not exist in the current database.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:61:22)
+    at async withRetry (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:19:14)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:107:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-20T21:23:09.304Z] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:61:40
+
+  58   fullName?: string
+  59 ) {
+  60   return withRetry(async () => {
+→ 61     const existing = await prisma.user.findUnique(
+The table `public.User` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:61:40
+
+  58   fullName?: string
+  59 ) {
+  60   return withRetry(async () => {
+→ 61     const existing = await prisma.user.findUnique(
+The table `public.User` does not exist in the current database.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:61:22)
+    at async withRetry (C:\Users\HP\Desktop\tele_bot\src\lib\auth.ts:19:14)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:107:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:57:9
+
+[2026-07-23T16:42:10.480Z] GrammyError in middleware: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 24)
+GrammyError: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 24)
+    at toGrammyError (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\error.js:47:12)
+    at ApiClient.callApi (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handleAdminFilter (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:73:3)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:177:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-23T16:42:18.880Z] GrammyError in middleware: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 24)
+GrammyError: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 24)
+    at toGrammyError (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\error.js:47:12)
+    at ApiClient.callApi (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handleAdminFilter (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:73:3)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:177:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-23T16:56:27.678Z] ReferenceError in middleware: registerBoqProjectKeyboard is not defined
+ReferenceError: registerBoqProjectKeyboard is not defined
+    at handleRegisterBoq (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:1508:21)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-23T18:12:18.317Z] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.boq.findMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:1614:33
+
+  1611 const admin = await requireAdministrator(BigInt(from.id));
+  1612 await clearDraft(BigInt(from.id));
+  1613 
+→ 1614 const boqs = await prisma.boq.findMany(
+The table `public.Boq` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.boq.findMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:1614:33
+
+  1611 const admin = await requireAdministrator(BigInt(from.id));
+  1612 await clearDraft(BigInt(from.id));
+  1613 
+→ 1614 const boqs = await prisma.boq.findMany(
+The table `public.Boq` does not exist in the current database.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleManageBoq (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:1614:16)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-23T18:14:28.021Z] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.boq.findMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:1614:33
+
+  1611 const admin = await requireAdministrator(BigInt(from.id));
+  1612 await clearDraft(BigInt(from.id));
+  1613 
+→ 1614 const boqs = await prisma.boq.findMany(
+The table `public.Boq` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.boq.findMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:1614:33
+
+  1611 const admin = await requireAdministrator(BigInt(from.id));
+  1612 await clearDraft(BigInt(from.id));
+  1613 
+→ 1614 const boqs = await prisma.boq.findMany(
+The table `public.Boq` does not exist in the current database.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async handleManageBoq (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:1614:16)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-23T20:26:50.650Z] PrismaClientKnownRequestError in middleware: 
+Invalid `prisma.materialRequest.findMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:354:33
+
+  351   if (options.dateTo) where.requestDate.lte = options.dateTo;
+  352 }
+  353 
+→ 354 return prisma.materialRequest.findMany(
+Server has closed the connection.
+PrismaClientKnownRequestError: 
+Invalid `prisma.materialRequest.findMany()` invocation in
+C:\Users\HP\Desktop\tele_bot\src\lib\material-request.ts:354:33
+
+  351   if (options.dateTo) where.requestDate.lte = options.dateTo;
+  352 }
+  353 
+→ 354 return prisma.materialRequest.findMany(
+Server has closed the connection.
+    at ei.handleRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at ei.request (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\Users\HP\Desktop\tele_bot\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+    at async showFilteredRequests (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\my-requests.ts:42:20)
+    at async handleMyRequestsFilterCallback (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\my-requests.ts:189:3)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:239:7)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+
+[2026-07-23T22:46:56.230Z] [handleAdminAssignUser] GrammyError: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 73)
+    at toGrammyError (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\error.js:47:12)
+    at ApiClient.callApi (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handleAdminAssignUser (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:1051:5)
+    at async handleAdminDraftMessage (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:1457:9)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:507:28)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+
+[2026-07-23T22:47:24.756Z] [handleAdminAssignUser] GrammyError: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 73)
+    at toGrammyError (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\error.js:47:12)
+    at ApiClient.callApi (C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\core\client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handleAdminAssignUser (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:1051:5)
+    at async handleAdminDraftMessage (C:\Users\HP\Desktop\tele_bot\src\bot\handlers\admin.ts:1457:9)
+    at async <anonymous> (C:\Users\HP\Desktop\tele_bot\src\bot\index.ts:507:28)
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:578:13
+    at async C:\Users\HP\Desktop\tele_bot\node_modules\grammy\out\composer.js:62:13
+

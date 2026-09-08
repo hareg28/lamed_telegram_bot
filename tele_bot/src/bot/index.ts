@@ -107,7 +107,7 @@ let botInstance: Bot | null = null;
 export function createBot(): Bot {
   if (botInstance) return botInstance;
 
-  const token = process.env.BOT_TOKEN;
+  const token = process.env.BOT_TOKEN?.trim().replace(/^["']|["']$/g, "");
   if (!token) {
     throw new Error("BOT_TOKEN environment variable is required");
   }
@@ -547,16 +547,18 @@ export function createBot(): Bot {
     const errorStack = err instanceof Error ? (err.stack ?? "") : (err as any).stack ?? "";
     console.error("Bot error:", errorMsg, "\n", errorStack);
 
-    try {
-      const fs = await import("fs");
-      const timestamp = new Date().toISOString();
-      fs.appendFileSync(
-        "c:\\Users\\HP\\Desktop\\tele_bot\\bot-errors.log",
-        `[${timestamp}] ${errorMsg}\n${errorStack}\n\n`,
-        "utf8"
-      );
-    } catch (logErr) {
-      console.error("Failed to write error log:", logErr);
+    if (process.platform === "win32") {
+      try {
+        const fs = await import("fs");
+        const timestamp = new Date().toISOString();
+        fs.appendFileSync(
+          "bot-errors.log",
+          `[${timestamp}] ${errorMsg}\n${errorStack}\n\n`,
+          "utf8"
+        );
+      } catch {
+        // ignore
+      }
     }
 
     // Only send a user-visible reply for non-Telegram API errors (those usually resolve on retry)

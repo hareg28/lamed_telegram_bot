@@ -22,9 +22,7 @@ function getHandler() {
   const { webhookCallback } = require("grammy");
   const bot = createBot();
 
-  webhookHandler = webhookCallback(bot, "http", {
-    secretToken: getWebhookSecret(),
-  });
+  webhookHandler = webhookCallback(bot, "http");
 
   return webhookHandler!;
 }

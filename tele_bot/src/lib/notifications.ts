@@ -15,7 +15,7 @@ let notifyBot: Bot | null = null;
 
 function getBot(): Bot {
   if (notifyBot) return notifyBot;
-  const token = process.env.BOT_TOKEN;
+  const token = process.env.BOT_TOKEN?.trim().replace(/^["']|["']$/g, "");
   if (!token) throw new Error("BOT_TOKEN is not configured");
   notifyBot = new Bot(token);
   return notifyBot;

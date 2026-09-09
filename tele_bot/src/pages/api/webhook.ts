@@ -31,8 +31,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === "GET") {
     let dbStatus = "unchecked";
     let dbError: string | null = null;
+    let dbUrlPreview: string | null = null;
     try {
-      const { default: prisma } = await import("@/lib/prisma");
+      const { default: prisma, cleanDatabaseUrl } = await import("@/lib/prisma");
+      const cleaned = cleanDatabaseUrl(process.env.DATABASE_URL);
+      if (cleaned) {
+        dbUrlPreview = cleaned.replace(/:([^:@]+)@/, ":***@");
+      }
       await prisma.$queryRaw`SELECT 1`;
       dbStatus = "connected";
     } catch (e: any) {
@@ -52,11 +57,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.status(200).json({
       status: "ok",
-      version: "1.0.2",
+      version: "1.0.3",
       message: `${getCompanyName()} Bot webhook is ready`,
       configured: !!process.env.BOT_TOKEN,
       botMode: getBotMode(),
-      db: { status: dbStatus, error: dbError },
+      db: { status: dbStatus, error: dbError, preview: dbUrlPreview },
       bot: { status: botStatus, error: botError },
     });
     return;

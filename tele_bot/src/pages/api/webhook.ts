@@ -29,12 +29,35 @@ function getHandler() {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "GET") {
+    let dbStatus = "unchecked";
+    let dbError: string | null = null;
+    try {
+      const { default: prisma } = await import("@/lib/prisma");
+      await prisma.$queryRaw`SELECT 1`;
+      dbStatus = "connected";
+    } catch (e: any) {
+      dbStatus = "failed";
+      dbError = e?.message || String(e);
+    }
+
+    let botStatus = "unchecked";
+    let botError: string | null = null;
+    try {
+      createBot();
+      botStatus = "created";
+    } catch (e: any) {
+      botStatus = "failed";
+      botError = e?.message || String(e);
+    }
+
     res.status(200).json({
       status: "ok",
-      version: "1.0.1",
+      version: "1.0.2",
       message: `${getCompanyName()} Bot webhook is ready`,
       configured: !!process.env.BOT_TOKEN,
       botMode: getBotMode(),
+      db: { status: dbStatus, error: dbError },
+      bot: { status: botStatus, error: botError },
     });
     return;
   }

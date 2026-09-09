@@ -16,29 +16,46 @@ let SHEET_ID = process.env.GOOGLE_SHEET_ID?.trim();
 
 // ✅ UPDATED: Uses GOOGLE_APPLICATION_CREDENTIALS from .env and refreshes SHEET_ID dynamically
 async function getSheetsClient() {
-  const credentialsPath = process.env.GOOGLE_APPLICATION_CREDENTIALS;
   SHEET_ID = process.env.GOOGLE_SHEET_ID?.trim();
-
-  if (!credentialsPath) {
-    console.warn("Google Sheets credentials path is not configured in .env (GOOGLE_APPLICATION_CREDENTIALS)");
-    return null;
-  }
 
   if (!SHEET_ID || SHEET_ID.startsWith("#")) {
     console.warn("GOOGLE_SHEET_ID is not configured or invalid in .env");
     return null;
   }
 
-  try {
-    const auth = new google.auth.GoogleAuth({
-      keyFile: credentialsPath,
-      scopes: SCOPES,
-    });
-    return google.sheets({ version: "v4", auth });
-  } catch (err) {
-    console.error("Failed to initialize Google Sheets client", err);
-    return null;
+  // 1. Service account email + private key (preferred on Vercel/serverless)
+  const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL?.trim().replace(/^["']|["']$/g, "");
+  let privateKey = process.env.GOOGLE_PRIVATE_KEY?.trim().replace(/^["']|["']$/g, "");
+  if (email && privateKey) {
+    try {
+      privateKey = privateKey.replace(/\\n/g, "\n");
+      const auth = new google.auth.JWT({
+        email,
+        key: privateKey,
+        scopes: SCOPES,
+      });
+      return google.sheets({ version: "v4", auth });
+    } catch (err) {
+      console.error("Failed to initialize Google Sheets via service account env vars", err);
+    }
   }
+
+  // 2. Fallback: File-based credentials (for local dev)
+  const credentialsPath = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+  if (credentialsPath) {
+    try {
+      const auth = new google.auth.GoogleAuth({
+        keyFile: credentialsPath,
+        scopes: SCOPES,
+      });
+      return google.sheets({ version: "v4", auth });
+    } catch (err) {
+      console.error("Failed to initialize Google Sheets client via keyFile", err);
+    }
+  }
+
+  console.warn("Google Sheets credentials not configured (set GOOGLE_SERVICE_ACCOUNT_EMAIL & GOOGLE_PRIVATE_KEY or GOOGLE_APPLICATION_CREDENTIALS)");
+  return null;
 }
 
 // ============================================================

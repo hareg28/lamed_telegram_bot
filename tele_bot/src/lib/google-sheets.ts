@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import { google } from "googleapis";
 import type {
   MaterialRequest,
@@ -14,18 +16,43 @@ const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
 
 let SHEET_ID = process.env.GOOGLE_SHEET_ID?.trim();
 
-// ✅ UPDATED: Uses GOOGLE_APPLICATION_CREDENTIALS from .env and refreshes SHEET_ID dynamically
+// ✅ Uses GOOGLE_SERVICE_ACCOUNT_EMAIL & GOOGLE_PRIVATE_KEY, or resolves key file
 async function getSheetsClient() {
   SHEET_ID = process.env.GOOGLE_SHEET_ID?.trim();
 
   if (!SHEET_ID || SHEET_ID.startsWith("#")) {
-    console.warn("GOOGLE_SHEET_ID is not configured or invalid in .env");
+    console.warn("GOOGLE_SHEET_ID is not configured or invalid in environment variables.");
     return null;
   }
 
   // 1. Service account email + private key (preferred on Vercel/serverless)
-  const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL?.trim().replace(/^["']|["']$/g, "");
+  let email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL?.trim().replace(/^["']|["']$/g, "");
   let privateKey = process.env.GOOGLE_PRIVATE_KEY?.trim().replace(/^["']|["']$/g, "");
+
+  // 2. Fallback: Read from local google-sheets-key.json file if env vars are missing
+  if (!email || !privateKey) {
+    const candidatePaths = [
+      process.env.GOOGLE_APPLICATION_CREDENTIALS,
+      path.join(process.cwd(), "google-sheets-key.json"),
+      path.join(process.cwd(), "tele_bot", "google-sheets-key.json"),
+    ].filter(Boolean) as string[];
+
+    for (const keyPath of candidatePaths) {
+      try {
+        if (fs.existsSync(keyPath)) {
+          const content = JSON.parse(fs.readFileSync(keyPath, "utf-8"));
+          if (content.client_email && content.private_key) {
+            email = content.client_email;
+            privateKey = content.private_key;
+            break;
+          }
+        }
+      } catch (e) {
+        // ignore parse error and keep trying
+      }
+    }
+  }
+
   if (email && privateKey) {
     try {
       privateKey = privateKey.replace(/\\n/g, "\n");
@@ -36,25 +63,11 @@ async function getSheetsClient() {
       });
       return google.sheets({ version: "v4", auth });
     } catch (err) {
-      console.error("Failed to initialize Google Sheets via service account env vars", err);
+      console.error("Failed to initialize Google Sheets via service account credentials", err);
     }
   }
 
-  // 2. Fallback: File-based credentials (for local dev)
-  const credentialsPath = process.env.GOOGLE_APPLICATION_CREDENTIALS;
-  if (credentialsPath) {
-    try {
-      const auth = new google.auth.GoogleAuth({
-        keyFile: credentialsPath,
-        scopes: SCOPES,
-      });
-      return google.sheets({ version: "v4", auth });
-    } catch (err) {
-      console.error("Failed to initialize Google Sheets client via keyFile", err);
-    }
-  }
-
-  console.warn("Google Sheets credentials not configured (set GOOGLE_SERVICE_ACCOUNT_EMAIL & GOOGLE_PRIVATE_KEY or GOOGLE_APPLICATION_CREDENTIALS)");
+  console.warn("Google Sheets credentials not configured. Please set GOOGLE_SERVICE_ACCOUNT_EMAIL & GOOGLE_PRIVATE_KEY in your deployment environment variables (Vercel).");
   return null;
 }
 

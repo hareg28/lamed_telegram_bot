@@ -240,7 +240,9 @@ async function handleRegFinish(
   });
 
   // Sync to Google Sheets
-  appendSupplierRow(supplier).catch(console.error);
+  await appendSupplierRow(supplier).catch((err) =>
+    console.error("Google Sheets Supplier sync error:", err)
+  );
 
   await clearDraft(BigInt(from.id));
   await ctx.reply(
@@ -371,7 +373,9 @@ async function handleEditValue(
   });
 
   // Sync update to Google Sheets
-  appendSupplierRow(updated).catch(console.error);
+  await appendSupplierRow(updated).catch((err) =>
+    console.error("Google Sheets Supplier sync error:", err)
+  );
 
   await clearDraft(BigInt(from.id));
   await ctx.reply(`✅ <b>${updated.name}</b> updated successfully!`, {
@@ -402,7 +406,9 @@ async function handleToggle(ctx: Context, text: string): Promise<boolean> {
     data: { isActive: !supplier.isActive },
   });
 
-  appendSupplierRow(updated).catch(console.error);
+  await appendSupplierRow(updated).catch((err) =>
+    console.error("Google Sheets Supplier sync error:", err)
+  );
 
   await clearDraft(BigInt(from.id));
   await ctx.reply(
@@ -568,7 +574,9 @@ async function handleRegBulk(ctx: Context, text: string): Promise<boolean> {
   });
 
   // Sync to Google Sheets
-  appendSupplierRow(supplier).catch(console.error);
+  await appendSupplierRow(supplier).catch((err) =>
+    console.error("Google Sheets Supplier sync error:", err)
+  );
 
   await clearDraft(BigInt(from.id));
   await ctx.reply(

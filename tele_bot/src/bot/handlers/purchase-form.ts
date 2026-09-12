@@ -681,7 +681,9 @@ async function handleInlineRegFinish(
   });
 
   const { appendSupplierRow } = await import("@/lib/google-sheets");
-  appendSupplierRow(supplier).catch(console.error);
+  await appendSupplierRow(supplier).catch((err) =>
+    console.error("Google Sheets Supplier sync error:", err)
+  );
 
   await selectSupplier(ctx, supplier.id, supplier.name, { phone: supplier.phone ?? undefined });
   return true;
@@ -747,7 +749,9 @@ async function handleInlineSupplierRegBulk(
     });
 
     const { appendSupplierRow } = await import("@/lib/google-sheets");
-    appendSupplierRow(supplier).catch(console.error);
+    await appendSupplierRow(supplier).catch((err) =>
+      console.error("Google Sheets Supplier sync error:", err)
+    );
   }
 
   await selectSupplier(ctx, supplier.id, supplier.name, { phone: supplier.phone ?? undefined });

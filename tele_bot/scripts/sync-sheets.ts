@@ -5,7 +5,7 @@ import {
   appendSupplierRow,
   appendPriceHistoryRows,
   upsertProjectRow,
-} from "../src/lib/google-sheets";
+} from "@/lib/google-sheets";
 
 const prisma = new PrismaClient();
 
@@ -47,7 +47,7 @@ async function main() {
     
     if (mr.status === "REJECTED") {
       const rejAction = mr.approvalHistory.find(h => h.action === "MR_REJECTED");
-      if (rejAction) rejectionReason = rejAction.remarks ?? undefined;
+      if (rejAction) rejectionReason = (rejAction as any).remarks ?? undefined;
     }
 
     await upsertMaterialRequestRows(mr as any, {
@@ -73,7 +73,7 @@ async function main() {
     let rejectionReason = pr.rejectionReason ?? undefined;
     if (pr.status === "REJECTED" && !rejectionReason) {
       const rejAction = pr.approvalHistory.find(h => h.action === "PURCHASE_REJECTED");
-      if (rejAction) rejectionReason = rejAction.remarks ?? undefined;
+      if (rejAction) rejectionReason = (rejAction as any).remarks ?? undefined;
     }
 
     await upsertPurchaseRequestRows(pr as any, { rejectionReason });

@@ -258,7 +258,9 @@ export async function submitPurchaseRequest(
   // Sync submitted PR to Google Sheets (as Pending Approval)
   const full = await getPurchaseRequestById(purchase.id);
   if (full) {
-    upsertPurchaseRequestRows(full as any).catch(console.error);
+    await upsertPurchaseRequestRows(full as any).catch((err) =>
+      console.error("Google Sheets PR sync error:", err)
+    );
   }
 
   return purchase;
@@ -345,7 +347,9 @@ export async function approvePurchaseRequest(
     await logActivity("PURCHASE_APPROVED", "PurchaseRequest", prId, adminId);
 
     // Sync to Sheet 2 (Purchase Requests)
-    upsertPurchaseRequestRows(completed as any).catch(console.error);
+    await upsertPurchaseRequestRows(completed as any).catch((err) =>
+      console.error("Google Sheets PR sync error:", err)
+    );
 
     // Also sync MR status update to Sheet 1
     const updatedMr = await prisma.materialRequest.findUnique({
@@ -355,9 +359,9 @@ export async function approvePurchaseRequest(
     if (updatedMr) {
       const { upsertMaterialRequestRows } = await import("@/lib/google-sheets");
       const admin = await prisma.user.findUnique({ where: { id: adminId } });
-      upsertMaterialRequestRows(updatedMr as any, {
+      await upsertMaterialRequestRows(updatedMr as any, {
         approvedByName: admin?.fullName,
-      }).catch(console.error);
+      }).catch((err) => console.error("Google Sheets MR sync error:", err));
     }
   }
 
@@ -430,7 +434,9 @@ export async function rejectPurchaseRequest(
     },
   });
   if (updated) {
-    upsertPurchaseRequestRows(updated as any, { rejectionReason: remarks }).catch(console.error);
+    await upsertPurchaseRequestRows(updated as any, { rejectionReason: remarks }).catch((err) =>
+      console.error("Google Sheets PR sync error:", err)
+    );
   }
 
   return pr;
@@ -497,7 +503,9 @@ export async function markPurchaseRequestAsPurchased(
   if (fullPr) {
     await logActivity("PURCHASE_ORDERED", "PurchaseRequest", prId, userId);
     // Sync to Sheet 2 (Purchase Requests)
-    upsertPurchaseRequestRows(fullPr as any).catch(console.error);
+    await upsertPurchaseRequestRows(fullPr as any).catch((err) =>
+      console.error("Google Sheets PR sync error:", err)
+    );
   }
 
   return fullPr;
@@ -580,8 +588,12 @@ export async function markPurchaseRequestAsCompleted(
     await logActivity("PURCHASE_COMPLETED", "PurchaseRequest", prId, userId);
 
     // Sync to Sheet 2 (Purchase Requests) and Sheet 4 (Price History)
-    upsertPurchaseRequestRows(completedPr as any).catch(console.error);
-    appendPriceHistoryRows(completedPr as any).catch(console.error);
+    await upsertPurchaseRequestRows(completedPr as any).catch((err) =>
+      console.error("Google Sheets PR sync error:", err)
+    );
+    await appendPriceHistoryRows(completedPr as any).catch((err) =>
+      console.error("Google Sheets Price History sync error:", err)
+    );
 
     // If MR status updated to COMPLETED, sync MR to Sheet 1
     const mr = completedPr.materialRequest;
@@ -592,9 +604,9 @@ export async function markPurchaseRequestAsCompleted(
     if (updatedMr && updatedMr.status === "COMPLETED") {
       const { upsertMaterialRequestRows } = await import("@/lib/google-sheets");
       const approver = completedPr.approvedBy;
-      upsertMaterialRequestRows(updatedMr as any, {
+      await upsertMaterialRequestRows(updatedMr as any, {
         approvedByName: approver?.fullName ?? undefined,
-      }).catch(console.error);
+      }).catch((err) => console.error("Google Sheets MR sync error:", err));
     }
   }
 

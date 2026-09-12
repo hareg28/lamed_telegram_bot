@@ -431,7 +431,9 @@ export async function handleSelectProjectTypeCallback(ctx: Context, projectTypeO
         data: { projectType: projectTypeOrSkip.trim() },
       });
       const { upsertProjectRow } = await import("@/lib/google-sheets");
-      upsertProjectRow(updated).catch(() => {});
+      await upsertProjectRow(updated).catch((err) =>
+        console.error("Google Sheets Project sync error:", err)
+      );
     }
     await clearDraft(BigInt(from.id));
     const projects = await prisma.project.findMany({

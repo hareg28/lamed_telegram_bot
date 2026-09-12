@@ -117,7 +117,9 @@ export async function submitMaterialRequest(
 
   // Sync to Google Sheets Sheet 1 (Material Requests) upon submission
   const { upsertMaterialRequestRows } = await import("@/lib/google-sheets");
-  upsertMaterialRequestRows(mr as any).catch(console.error);
+  await upsertMaterialRequestRows(mr as any).catch((err) =>
+    console.error("Google Sheets MR sync error:", err)
+  );
 
   await notifyMrSubmitted(mr.id);
   await logActivity("MR_SUBMITTED", "MaterialRequest", mr.id, userId, {
@@ -156,7 +158,9 @@ export async function approveMaterialRequest(
   // Sync to Google Sheets Sheet 1 (Material Requests)
   const { upsertMaterialRequestRows } = await import("@/lib/google-sheets");
   const admin = await prisma.user.findUnique({ where: { id: adminId } });
-  upsertMaterialRequestRows(updated, { approvedByName: admin?.fullName ?? undefined }).catch(console.error);
+  await upsertMaterialRequestRows(updated, { approvedByName: admin?.fullName ?? undefined }).catch((err) =>
+    console.error("Google Sheets MR sync error:", err)
+  );
 
   await logActivity("MR_APPROVED", "MaterialRequest", mrId, adminId);
 
@@ -191,7 +195,9 @@ export async function rejectMaterialRequest(
 
   // Sync rejection to Google Sheets Sheet 1
   const { upsertMaterialRequestRows } = await import("@/lib/google-sheets");
-  upsertMaterialRequestRows(updated, { rejectionReason: remarks ?? "" }).catch(console.error);
+  await upsertMaterialRequestRows(updated, { rejectionReason: remarks ?? "" }).catch((err) =>
+    console.error("Google Sheets MR sync error:", err)
+  );
 
   await logActivity("MR_REJECTED", "MaterialRequest", mrId, adminId, { remarks });
 

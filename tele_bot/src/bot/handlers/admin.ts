@@ -1348,8 +1348,8 @@ export async function handleAdminDraftMessage(
             name,
           },
         });
-        // Sync new project to Google Sheets (fire-and-forget)
-        upsertProjectRow(newProj).catch((err) => console.error("Sheets sync error:", err));
+        // Sync new project to Google Sheets
+        await upsertProjectRow(newProj).catch((err) => console.error("Sheets sync error:", err));
 
         await updateDraftData(BigInt(from.id), { _adminProjectId: newProj.id });
         await setDraftStep(BigInt(from.id), "project_add_type");
@@ -1378,7 +1378,7 @@ export async function handleAdminDraftMessage(
             where: { id: projectId },
             data: { projectType: trimmed },
           });
-          upsertProjectRow(updated).catch(() => {});
+          await upsertProjectRow(updated).catch((err) => console.error("Sheets sync error:", err));
         }
         await clearDraft(BigInt(from.id));
         const projects = await prisma.project.findMany({
@@ -1412,7 +1412,7 @@ export async function handleAdminDraftMessage(
           where: { id: projectId },
           data: { projectType },
         });
-        upsertProjectRow(updated).catch(() => {});
+        await upsertProjectRow(updated).catch((err) => console.error("Sheets sync error:", err));
         await clearDraft(BigInt(from.id));
         await ctx.reply(
           `✅ Project <b>"${esc(updated.name)}"</b> type updated to <b>${esc(projectType)}</b>.`,
